@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 readme-sample
+.env
 
 # Editor directories and files
 .vscode/*
