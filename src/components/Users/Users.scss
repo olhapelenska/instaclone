@@ -1,0 +1,31 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.users {
+  &__picture {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__list {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid $borderGrayContent;
+    margin: 2rem 0 1.5rem;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  &__item {
+    @include flex-align-center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__username {
+    font-size: 12px;
+  }
+}

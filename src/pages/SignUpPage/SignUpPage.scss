@@ -1,0 +1,80 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.signup-page {
+  height: 100vh;
+  @include flex-center;
+  &__container {
+    width: 21.875rem;
+  }
+
+  &__login,
+  &__sign-up {
+    padding: 2.5rem;
+    background-color: $black;
+    border: 1px solid $borderGray;
+  }
+
+  &__login {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    @include flex-center;
+  }
+
+  &__link {
+    color: $metaBlue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__logo {
+    width: 9.375rem;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    border: 1px solid $borderGrayContent;
+    border-radius: 2px;
+    background-color: $instaBlack;
+    color: $white;
+    font-size: 0.875rem;
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  &__button {
+    margin-top: 0.625rem;
+    padding: 0.5rem 0;
+    background-color: $metaBlue;
+    color: $white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #007bb5;
+    }
+  }
+
+  &__error {
+    margin-top: 0.625rem;
+    color: #ff4d4d;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}

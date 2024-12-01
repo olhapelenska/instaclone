@@ -1,0 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: $black;
+  border-bottom: 1px solid $borderGray;
+
+  &__container {
+    width: 65%;
+    margin: 0 auto;
+    @include flex-space-between-center;
+    padding: 0.75rem 0;
+  }
+
+  &__logo {
+    width: 8rem;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__profile {
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  &__log-out {
+    cursor: pointer;
+  }
+}
