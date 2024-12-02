@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import UserPage from "./pages/UserPage/UserPage";
+import PictureDetailsPage from "./pages/PictureDetailsPage/PictureDetailsPage";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRoute>
               <UserPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/users/:userId/posts/:postId"
+          element={
+            <PrivateRoute>
+              <PictureDetailsPage />
             </PrivateRoute>
           }
         />

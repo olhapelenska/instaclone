@@ -30,11 +30,13 @@ function Users() {
               key={user.id}
               to={`/users/${user?.id || ""}`}
             >
-              <img
-                className="users__picture"
-                src={`${baseUrl}${user.profile_picture}`}
-                alt="profile picture"
-              />
+              <div className="users__picture-container">
+                <img
+                  className="users__picture"
+                  src={`${baseUrl}${user.profile_picture}`}
+                  alt="profile picture"
+                />
+              </div>
               <p className="users__username">{user.user_name}</p>
             </NavLink>
           );

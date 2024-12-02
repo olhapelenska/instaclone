@@ -4,18 +4,19 @@ import GalleryHeader from "../../components/GalleryHeader/GalleryHeader";
 import UserGallery from "../../components/UserGallery/UserGallery";
 import axios from "axios";
 import "./UserPage.scss";
+import { useParams } from "react-router";
 
 function UserPage() {
   const [user, setUser] = useState();
   const [activeTab, setActiveTab] = useState("posts"); // Default to "Posts"
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const { id } = useParams();
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
 
     try {
-      const response = await axios.get(`${baseUrl}/api/users/${user.id}`, {
+      const response = await axios.get(`${baseUrl}/api/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -43,6 +44,7 @@ function UserPage() {
       <GalleryHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       <UserGallery
         content={activeTab === "posts" ? user.posts : user.savedPosts}
+        userId={user.id}
       />
     </main>
   );

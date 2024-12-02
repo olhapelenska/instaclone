@@ -1,0 +1,17 @@
+.gallery {
+  width: 65%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+
+  &__item {
+  }
+
+  &__image {
+    height: 19rem;
+    width: 19rem;
+    object-fit: cover;
+  }
+}

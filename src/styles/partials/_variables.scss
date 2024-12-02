@@ -8,7 +8,12 @@ $borderGrayContent: #3f3f3f;
 $metaBlue: #0095f6;
 
 //font
-$fontWeightRegular: 400;
+$fontWeightThin: 100;
 $fontWeightLight: 300;
-$fontWeightBold: 600;
+$fontWeightRegular: 400;
+$fontWeightMedium: 500;
+$fontWeightBold: 700;
 $fontFamily: "Roboto";
+
+//gradient
+$gradientGreenBlue: linear-gradient(50deg, #003366 -3.85%, #50c878 100%);

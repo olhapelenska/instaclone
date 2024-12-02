@@ -7,6 +7,13 @@
     height: 3.5rem;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid $instaBlack;
+  }
+
+  &__picture-container {
+    border: solid 1.5px transparent;
+    background: $gradientGreenBlue border-box;
+    border-radius: 50%;
   }
 
   &__list {

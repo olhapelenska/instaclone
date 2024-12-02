@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Posts.scss";
-import heartIcon from "../../assets/images/heart.svg";
 import axios from "axios";
 import { NavLink } from "react-router";
 function Posts() {
   const [posts, setPosts] = useState([]);
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const spriteUrl = `${import.meta.env.BASE_URL || ""}icons.svg`;
 
   const getPosts = async () => {
     const token = localStorage.getItem("token");
@@ -66,17 +66,19 @@ function Posts() {
               src={`${baseUrl}${post.image_url}`}
               alt="post"
             />
-            <div className="posts__likes">
-              <img
+            <button
+              className="posts__likes"
+              onClick={() => handleLike(post.id)}
+            >
+              <svg
                 className={`posts__likes-icon ${
                   post.is_liked ? "posts__likes-icon--liked" : ""
                 }`}
-                src={heartIcon}
-                alt="heart icon"
-                onClick={() => handleLike(post.id)}
-              />
-              <p className="posts__likes-count">{post.likes_count} likes</p>
-            </div>
+              >
+                <use href={`${spriteUrl}#icon-heart`} />
+              </svg>
+            </button>
+            <p className="posts__likes-count">{post.likes_count} likes</p>
             <div className="posts__description">
               <span>{post.user_name} </span>
               <span>{post.description}</span>

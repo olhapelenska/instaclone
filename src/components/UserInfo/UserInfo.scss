@@ -1,13 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .user-info {
   width: 45%;
-  margin: 0 auto;
+  display: flex;
+  gap: 6rem;
+  margin: 2.5rem auto 3rem;
 
   &__profile-picture {
+    width: 9.5rem;
+    height: 9.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__content {
   }
 
   &__name {
+    font-size: 1.75rem;
+    font-weight: $fontWeightThin;
+    margin-bottom: 1.5rem;
   }
 
   &__post-count {
+  }
+
+  &__post-count-number {
+    font-weight: $fontWeightRegular;
+  }
+
+  &__post-count-text {
+    font-weight: $fontWeightLight;
   }
 }

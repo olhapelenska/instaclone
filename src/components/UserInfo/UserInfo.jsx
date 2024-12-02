@@ -10,8 +10,13 @@ function UserInfo({ profilePicture, userName, postCount }) {
         src={`${baseUrl}${profilePicture}`}
         alt={`${userName}'s profile`}
       />
-      <h2 className="user-info__name">{userName}</h2>
-      <p className="user-info__post-count">{postCount} Posts</p>
+      <div className="user-info__content">
+        <h1 className="user-info__name">{userName}</h1>
+        <div className="user-info__post-count">
+          <span className="user-info__post-count-number">{postCount} </span>
+          <span className="user-info__post-count-text">Posts</span>
+        </div>
+      </div>
     </div>
   );
 }

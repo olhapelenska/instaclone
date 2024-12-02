@@ -1,22 +1,29 @@
 import "./GalleryHeader.scss";
 
 function GalleryHeader({ activeTab, setActiveTab }) {
+  const spriteUrl = `${import.meta.env.BASE_URL || ""}icons.svg`; // Adjust path as needed
   return (
-    <div className="user-content-header">
+    <div className="gallery-header">
       <button
-        className={`user-content-header__tab ${
-          activeTab === "posts" ? "user-content-header__tab--active" : ""
+        className={`gallery-header__tab ${
+          activeTab === "posts" ? "gallery-header__tab--active" : ""
         }`}
         onClick={() => setActiveTab("posts")}
       >
+        <svg className="gallery-header__icon">
+          <use href={`${spriteUrl}#icon-posts`} />
+        </svg>
         Posts
       </button>
       <button
-        className={`user-content-header__tab ${
-          activeTab === "saved" ? "user-content-header__tab--active" : ""
+        className={`gallery-header__tab ${
+          activeTab === "saved" ? "gallery-header__tab--active" : ""
         }`}
         onClick={() => setActiveTab("saved")}
       >
+        <svg className="gallery-header__icon">
+          <use href={`${spriteUrl}#icon-saved`} />
+        </svg>
         Saved
       </button>
     </div>
