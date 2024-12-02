@@ -13,7 +13,6 @@ function PictureDetailsPage() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // Fetch post and gallery data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +40,6 @@ function PictureDetailsPage() {
     fetchData();
   }, [userId, postId]);
 
-  // Handle posting a new comment
   const handlePostComment = async () => {
     const token = localStorage.getItem("token");
 
@@ -57,7 +55,6 @@ function PictureDetailsPage() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // Fetch the updated post details to ensure consistency
       const updatedPostResponse = await axios.get(
         `${baseUrl}/api/users/${userId}/posts/${postId}`,
         { headers: { Authorization: `Bearer ${token}` } }
@@ -72,7 +69,6 @@ function PictureDetailsPage() {
     }
   };
 
-  // Handle deleting a comment
   const handleDeleteComment = async (commentId) => {
     const token = localStorage.getItem("token");
 
@@ -81,7 +77,6 @@ function PictureDetailsPage() {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Remove the deleted comment from the state
       setPost((prevPost) => ({
         ...prevPost,
         comments: prevPost.comments.filter(
@@ -103,7 +98,6 @@ function PictureDetailsPage() {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Navigate back to the user's gallery after deletion
       navigate(`/users/${userId}`);
     } catch (error) {
       console.error("Error deleting post:", error.response?.data?.message);
@@ -111,13 +105,11 @@ function PictureDetailsPage() {
     }
   };
 
-  // Determine current index and next/previous posts
   const currentIndex = gallery.findIndex((item) => item.id === postId);
   const prevPostId = currentIndex > 0 ? gallery[currentIndex - 1]?.id : null;
   const nextPostId =
     currentIndex < gallery.length - 1 ? gallery[currentIndex + 1]?.id : null;
 
-  // Render loading state
   if (!post) return <p>Loading...</p>;
 
   return (
@@ -158,7 +150,7 @@ function PictureDetailsPage() {
             <p className="picture-details__user-name">{post.user_name}</p>
           </div>
           <p className="picture-details__description">{post.description}</p>
-          {userId === post.user_id && (
+          {user.id === post.user_id && (
             <button
               onClick={handleDeletePost}
               className="picture-details__delete-post"
@@ -171,7 +163,7 @@ function PictureDetailsPage() {
               post.comments.map((comment) => (
                 <li key={comment.id} className="picture-details__comment">
                   <strong>{comment.user_name}:</strong> {comment.comment}
-                  {user.id === post.user_id && ( // Check if logged-in user owns the post
+                  {user.id === post.user_id && (
                     <button
                       className="picture-details__delete-comment"
                       onClick={() => handleDeleteComment(comment.id)}

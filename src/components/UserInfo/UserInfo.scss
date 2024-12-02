@@ -14,16 +14,10 @@
     object-fit: cover;
   }
 
-  &__content {
-  }
-
   &__name {
     font-size: 1.75rem;
     font-weight: $fontWeightThin;
     margin-bottom: 1.5rem;
-  }
-
-  &__post-count {
   }
 
   &__post-count-number {
@@ -35,16 +29,17 @@
   }
 
   &__add-post {
-    background-color: #0066cc;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: $white;
+    border: 1px solid $white;
+    padding: 0.5rem 0.875rem;
+    border-radius: 2px;
+    margin-top: 1rem;
     cursor: pointer;
-    margin-top: 10px;
+    transition: all 0.2s;
 
     &:hover {
-      background-color: #004c99;
+      background-color: $white;
+      color: $instaBlack;
     }
   }
 }
@@ -55,26 +50,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  @include flex-center;
 
   &__content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
+    background: $instaBlack;
+    padding: 1rem;
+    border-radius: 2px;
+    border: 1px solid $borderGray;
     width: 90%;
-    max-width: 400px;
+    max-width: 25rem;
     text-align: center;
     position: relative;
   }
 
   &__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: $white;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
@@ -82,38 +75,41 @@
 
   &__title {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.5rem;
   }
 
   &__input {
     resize: none;
     width: 100%;
-    height: 80px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 5rem;
+    padding: 0.5rem;
+    border: 1px solid $borderGray;
+    border-radius: 2px;
+    background: $instaBlack;
+    color: $white;
   }
 
   &__file-input {
-    padding: 5px;
+    padding: 0.5rem 0;
   }
 
   &__submit {
-    background-color: #0066cc;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+    color: $white;
+    border: 1px solid $white;
+    padding: 0.5rem 0.875rem;
+    border-radius: 2px;
     cursor: pointer;
+    transition: all 0.2s;
 
     &:hover {
-      background-color: #004c99;
+      background-color: $white;
+      color: $instaBlack;
     }
   }
 

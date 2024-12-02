@@ -12,7 +12,7 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    window.location.href = "/login"; // Redirect to login
+    window.location.href = "/login";
   };
 
   return (
@@ -30,10 +30,7 @@ function Header() {
           >
             <img src={houseIcon} alt="Home Icon" />
           </NavLink>
-          <NavLink
-            to={`/users/${user?.id || ""}`} // Use the user's ID from localStorage
-            className="header__profile"
-          >
+          <NavLink to={`/users/${user?.id || ""}`} className="header__profile">
             <img src={`${baseUrl}${user.profile_picture}`} alt="Profile Icon" />
           </NavLink>
           <div className="header__log-out">
