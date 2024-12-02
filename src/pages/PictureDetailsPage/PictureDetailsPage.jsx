@@ -105,6 +105,36 @@ function PictureDetailsPage() {
     }
   };
 
+  function calculateRelativeTime(date) {
+    const SECONDS_IN_MINUTE = 60;
+    const SECONDS_IN_HOUR = 60 * SECONDS_IN_MINUTE;
+    const SECONDS_IN_DAY = 24 * SECONDS_IN_HOUR;
+    const SECONDS_IN_MONTH = 30.44 * SECONDS_IN_DAY;
+    const SECONDS_IN_YEAR = 365.25 * SECONDS_IN_DAY;
+
+    const oldDateSeconds = Math.floor(date / 1000);
+    const currentDate = Date.now();
+    const currentDateSeconds = Math.floor(currentDate / 1000);
+    const difference = currentDateSeconds - oldDateSeconds;
+
+    let output = ``;
+    if (difference < SECONDS_IN_MINUTE) {
+      output = `${difference} seconds ago`;
+    } else if (difference < SECONDS_IN_HOUR) {
+      output = `${Math.floor(difference / SECONDS_IN_MINUTE)} minutes ago`;
+    } else if (difference < SECONDS_IN_DAY) {
+      output = `${Math.floor(difference / SECONDS_IN_HOUR)} hours ago`;
+    } else if (difference < SECONDS_IN_MONTH) {
+      output = `${Math.floor(difference / SECONDS_IN_DAY)} days ago`;
+    } else if (difference < SECONDS_IN_YEAR) {
+      output = `${Math.floor(difference / SECONDS_IN_MONTH)} months ago`;
+    } else {
+      output = `${Math.floor(difference / SECONDS_IN_YEAR)} years ago`;
+    }
+
+    return output;
+  }
+
   const currentIndex = gallery.findIndex((item) => item.id === postId);
   const prevPostId = currentIndex > 0 ? gallery[currentIndex - 1]?.id : null;
   const nextPostId =
@@ -158,6 +188,12 @@ function PictureDetailsPage() {
               Delete Post
             </button>
           )}
+          <p className="picture-details__time-posted">
+            {calculateRelativeTime(Date.parse(post.created_at))}
+          </p>
+          <p className="picture-details__time-posted">
+            {post.likes_count} likes
+          </p>
           <ul className="picture-details__comments">
             {Array.isArray(post.comments) && post.comments.length > 0 ? (
               post.comments.map((comment) => (

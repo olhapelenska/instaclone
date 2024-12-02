@@ -58,10 +58,8 @@
     border-radius: 50%;
   }
 
-  &__description {
-    padding: 0.5rem 0.5rem 1rem 1.5rem;
-  }
-
+  &__description,
+  &__time-posted,
   &__likes {
     padding: 0.5rem 0.5rem 1rem 1.5rem;
   }
