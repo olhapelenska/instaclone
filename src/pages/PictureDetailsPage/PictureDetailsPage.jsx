@@ -93,6 +93,24 @@ function PictureDetailsPage() {
     }
   };
 
+  const handleDeletePost = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!window.confirm("Are you sure you want to delete this post?")) return;
+
+    try {
+      await axios.delete(`${baseUrl}/api/posts/${postId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      // Navigate back to the user's gallery after deletion
+      navigate(`/users/${userId}`);
+    } catch (error) {
+      console.error("Error deleting post:", error.response?.data?.message);
+      alert("Failed to delete post. Please try again.");
+    }
+  };
+
   // Determine current index and next/previous posts
   const currentIndex = gallery.findIndex((item) => item.id === postId);
   const prevPostId = currentIndex > 0 ? gallery[currentIndex - 1]?.id : null;
@@ -140,6 +158,14 @@ function PictureDetailsPage() {
             <p className="picture-details__user-name">{post.user_name}</p>
           </div>
           <p className="picture-details__description">{post.description}</p>
+          {userId === post.user_id && (
+            <button
+              onClick={handleDeletePost}
+              className="picture-details__delete-post"
+            >
+              Delete Post
+            </button>
+          )}
           <ul className="picture-details__comments">
             {Array.isArray(post.comments) && post.comments.length > 0 ? (
               post.comments.map((comment) => (

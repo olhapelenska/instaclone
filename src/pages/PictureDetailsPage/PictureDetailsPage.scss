@@ -126,4 +126,19 @@
       text-decoration: underline;
     }
   }
+
+  &__delete-post {
+    margin: 0.5rem 0.5rem 1rem 1.5rem;
+    padding: 1rem;
+    background-color: #e74c3c;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
 }

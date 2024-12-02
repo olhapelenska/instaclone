@@ -26,6 +26,20 @@ function UserPage() {
     }
   };
 
+  const refreshPosts = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.get(`${baseUrl}/api/users/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setUser((prev) => ({ ...prev, posts: response.data.posts }));
+    } catch (error) {
+      console.error("Error refreshing posts:", error.response?.data?.message);
+    }
+  };
+
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -40,6 +54,8 @@ function UserPage() {
         profilePicture={user.profile_picture}
         userName={user.user_name}
         postCount={user.posts.length}
+        userId={user.id}
+        refreshPosts={refreshPosts}
       />
       <GalleryHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       <UserGallery
