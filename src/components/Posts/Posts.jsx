@@ -36,7 +36,7 @@ function Posts() {
       );
 
       console.log(response.data.message);
-      getPosts(); // Refresh posts to update likes count
+      getPosts();
     } catch (error) {
       console.error("Error toggling like:", error.response?.data?.message);
     }
@@ -44,7 +44,7 @@ function Posts() {
 
   useEffect(() => {
     getPosts();
-  }, []); // Empty dependency array to avoid repeated calls
+  }, []);
 
   return (
     <section className="posts">

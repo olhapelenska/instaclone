@@ -3,12 +3,11 @@ import UserInfo from "../../components/UserInfo/UserInfo";
 import GalleryHeader from "../../components/GalleryHeader/GalleryHeader";
 import UserGallery from "../../components/UserGallery/UserGallery";
 import axios from "axios";
-import "./UserPage.scss";
 import { useParams } from "react-router";
 
 function UserPage() {
   const [user, setUser] = useState();
-  const [activeTab, setActiveTab] = useState("posts"); // Default to "Posts"
+  const [activeTab, setActiveTab] = useState("posts");
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const { id } = useParams();
 

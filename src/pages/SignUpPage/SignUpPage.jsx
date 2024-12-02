@@ -25,7 +25,7 @@ function SignUpPage() {
 
       if (response.data?.id) {
         console.log("Sign up successful! New user:", response.data);
-        navigate("/login"); // Redirect to login page
+        navigate("/login");
       } else {
         throw new Error("User registration failed. No user ID returned.");
       }

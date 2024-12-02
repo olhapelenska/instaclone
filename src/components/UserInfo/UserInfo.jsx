@@ -51,7 +51,7 @@ function UserInfo({
 
       setIsModalOpen(false);
       setFormData({ description: "", image: null });
-      refreshPosts(); // Refresh posts to include the new one
+      refreshPosts();
     } catch (error) {
       setError("Failed to create post. Please try again.");
     }

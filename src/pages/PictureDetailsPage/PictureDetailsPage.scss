@@ -58,9 +58,6 @@
     border-radius: 50%;
   }
 
-  &__user-name {
-  }
-
   &__description {
     padding: 0.5rem 0.5rem 1rem 1.5rem;
   }
@@ -100,12 +97,11 @@
     margin-left: 0.5rem;
     color: $metaBlue;
     border: none;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
-  }
-
-  &__button:hover {
-    background-color: #0073e6;
+    &:hover {
+      color: $white;
+    }
   }
 
   &__error {
@@ -128,17 +124,17 @@
   }
 
   &__delete-post {
-    margin: 0.5rem 0.5rem 1rem 1.5rem;
-    padding: 1rem;
-    background-color: #e74c3c;
     color: $white;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid $white;
+    padding: 0.5rem 0.875rem;
+    margin: 0 0.5rem 0.5rem 1.5rem;
+    border-radius: 2px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.2s;
 
     &:hover {
-      background-color: #c0392b;
+      background-color: $white;
+      color: $instaBlack;
     }
   }
 }

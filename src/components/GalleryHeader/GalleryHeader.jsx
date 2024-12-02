@@ -1,7 +1,7 @@
 import "./GalleryHeader.scss";
 
 function GalleryHeader({ activeTab, setActiveTab }) {
-  const spriteUrl = `${import.meta.env.BASE_URL || ""}icons.svg`; // Adjust path as needed
+  const spriteUrl = `${import.meta.env.BASE_URL || ""}icons.svg`;
   return (
     <div className="gallery-header">
       <button
