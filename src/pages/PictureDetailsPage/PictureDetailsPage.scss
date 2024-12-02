@@ -64,6 +64,43 @@
     padding: 0.5rem 0.5rem 1rem 1.5rem;
   }
 
+  &__description {
+    button {
+      color: $grey;
+    }
+  }
+
+  &__description-header {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__edit {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__edit-input {
+    background-color: $instaBlack;
+    color: $white;
+    width: fit-content;
+  }
+
+  &__likes {
+    @include flex-align-center;
+    gap: 0.5rem;
+  }
+
+  &__like-icon {
+    fill: $white;
+    width: 1.5rem;
+    height: 1.3031rem;
+
+    &--liked {
+      fill: red;
+    }
+  }
+
   &__comments {
     padding: 0.5rem 0.5rem 1rem 1.5rem;
     display: flex;

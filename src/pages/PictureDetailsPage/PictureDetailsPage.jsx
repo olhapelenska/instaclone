@@ -10,8 +10,11 @@ function PictureDetailsPage() {
   const [gallery, setGallery] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [error, setError] = useState("");
+  const [isEditingDescription, setIsEditingDescription] = useState(false);
+  const [newDescription, setNewDescription] = useState("");
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const user = JSON.parse(localStorage.getItem("user"));
+  const spriteUrl = `${import.meta.env.BASE_URL || ""}icons.svg`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +52,7 @@ function PictureDetailsPage() {
     }
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${baseUrl}/api/posts/${postId}/comments`,
         { user_id: user.id, comment: newComment.trim() },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -85,6 +88,66 @@ function PictureDetailsPage() {
       }));
     } catch (error) {
       console.error("Failed to delete comment:", error.response?.data?.message);
+    }
+  };
+
+  const handleLike = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("You must be logged in to like posts!");
+      return;
+    }
+
+    try {
+      if (post.is_liked) {
+        await axios.delete(`${baseUrl}/api/posts/${postId}/likes`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setPost((prevPost) => ({
+          ...prevPost,
+          is_liked: false,
+          likes_count: prevPost.likes_count - 1,
+        }));
+      } else {
+        await axios.post(
+          `${baseUrl}/api/posts/${postId}/likes`,
+          {},
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        setPost((prevPost) => ({
+          ...prevPost,
+          is_liked: true,
+          likes_count: prevPost.likes_count + 1,
+        }));
+      }
+    } catch (error) {
+      console.error("Error toggling like:", error.response?.data?.message);
+    }
+  };
+
+  const handleEditDescription = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!newDescription.trim()) {
+      alert("Description cannot be empty.");
+      return;
+    }
+
+    try {
+      const response = await axios.patch(
+        `${baseUrl}/api/posts/${postId}`,
+        { description: newDescription.trim() },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      setPost((prevPost) => ({
+        ...prevPost,
+        description: response.data.description,
+      }));
+      setIsEditingDescription(false);
+    } catch (error) {
+      console.error("Error updating description:", error.message);
     }
   };
 
@@ -146,7 +209,7 @@ function PictureDetailsPage() {
     <section className="picture-details">
       <button
         className="picture-details__close"
-        onClick={() => navigate(`/users/${user.id}`)}
+        onClick={() => navigate(`/users/${userId}`)}
       >
         &times;
       </button>
@@ -179,7 +242,42 @@ function PictureDetailsPage() {
             />
             <p className="picture-details__user-name">{post.user_name}</p>
           </div>
-          <p className="picture-details__description">{post.description}</p>
+          <div className="picture-details__description">
+            {isEditingDescription ? (
+              <div className="picture-details__edit">
+                <input
+                  type="text"
+                  value={newDescription}
+                  onChange={(e) => setNewDescription(e.target.value)}
+                  className="picture-details__edit-input"
+                />
+                <button
+                  onClick={handleEditDescription}
+                  className="picture-details__save-btn"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setIsEditingDescription(false)}
+                  className="picture-details__cancel-btn"
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div className="picture-details__description-header">
+                <p>{post.description}</p>
+                {user.id === post.user_id && (
+                  <button
+                    onClick={() => setIsEditingDescription(true)}
+                    className="picture-details__edit-btn"
+                  >
+                    Edit Description
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
           {user.id === post.user_id && (
             <button
               onClick={handleDeletePost}
@@ -191,9 +289,18 @@ function PictureDetailsPage() {
           <p className="picture-details__time-posted">
             {calculateRelativeTime(Date.parse(post.created_at))}
           </p>
-          <p className="picture-details__time-posted">
-            {post.likes_count} likes
-          </p>
+          <div className="picture-details__likes">
+            <button onClick={handleLike} className="picture-details__like-btn">
+              <svg
+                className={`picture-details__like-icon ${
+                  post.is_liked ? "picture-details__like-icon--liked" : ""
+                }`}
+              >
+                <use href={`${spriteUrl}#icon-heart`} />
+              </svg>
+            </button>
+            <span>{post.likes_count} likes</span>
+          </div>
           <ul className="picture-details__comments">
             {Array.isArray(post.comments) && post.comments.length > 0 ? (
               post.comments.map((comment) => (
