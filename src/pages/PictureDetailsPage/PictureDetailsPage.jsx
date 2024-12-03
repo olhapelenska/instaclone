@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./PictureDetailsPage.scss";
 import axios from "axios";
@@ -235,12 +235,16 @@ function PictureDetailsPage() {
         </div>
         <div className="picture-details__info">
           <div className="picture-details__user">
-            <img
-              src={`${baseUrl}${post.profile_picture}`}
-              alt="User profile"
-              className="picture-details__user-picture"
-            />
-            <p className="picture-details__user-name">{post.user_name}</p>
+            <NavLink to={`/users/${post?.user_id || ""}`}>
+              <img
+                src={`${baseUrl}${post.profile_picture}`}
+                alt="User profile"
+                className="picture-details__user-picture"
+              />
+            </NavLink>
+            <NavLink to={`/users/${post?.user_id || ""}`}>
+              <p className="picture-details__user-name">{post.user_name}</p>
+            </NavLink>
           </div>
           <div className="picture-details__description">
             {isEditingDescription ? (
