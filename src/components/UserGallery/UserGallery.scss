@@ -1,13 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .gallery {
-  width: 65%;
+  width: 90%;
+
+  @include tablet {
+    width: 65%;
+  }
+
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  @include tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   gap: 0.5rem;
   padding-bottom: 1.5rem;
 
   &__image {
-    height: 19rem;
+    height: 8.75rem;
+
+    @include tablet {
+      height: 12rem;
+    }
+
+    @include desktop {
+      height: 19rem;
+    }
     width: 19rem;
     object-fit: cover;
   }

@@ -14,12 +14,13 @@
     border: solid 1.5px transparent;
     background: $gradientGreenBlue border-box;
     border-radius: 50%;
+    width: 3.5rem;
   }
 
   &__list {
     display: flex;
     gap: 1rem;
-    padding: 1rem 2.5rem;
+    padding: 1rem 1.5rem;
     border: 1px solid $borderGrayContent;
     margin: 2rem 0 1.5rem;
     width: 100%;

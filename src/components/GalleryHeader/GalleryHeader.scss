@@ -2,7 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .gallery-header {
-  width: 65%;
+  width: 90%;
+
+  @include tablet {
+    width: 65%;
+  }
   margin: 0 auto 1rem;
   border-top: 1px solid $borderGray;
   display: flex;

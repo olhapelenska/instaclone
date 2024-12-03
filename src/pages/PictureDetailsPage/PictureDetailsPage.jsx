@@ -306,7 +306,8 @@ function PictureDetailsPage() {
               post.comments.map((comment) => (
                 <li key={comment.id} className="picture-details__comment">
                   <strong>{comment.user_name}:</strong> {comment.comment}
-                  {user.id === post.user_id && (
+                  {(user.id === post.user_id ||
+                    user.id === comment.user_id) && (
                     <button
                       className="picture-details__delete-comment"
                       onClick={() => handleDeleteComment(comment.id)}

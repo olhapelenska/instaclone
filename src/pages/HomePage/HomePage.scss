@@ -1,6 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .home-page {
   &__container {
-    width: 45%;
+    width: 90%;
+
+    @include tablet {
+      width: 65%;
+    }
+
+    @include desktop {
+      width: 45%;
+    }
     margin: 0 auto;
   }
 }

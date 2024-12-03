@@ -6,7 +6,6 @@ import { NavLink } from "react-router";
 function Users() {
   const [users, setUsers] = useState([]);
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  console.log(users);
 
   const getUsers = async () => {
     const token = localStorage.getItem("token");
