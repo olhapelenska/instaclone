@@ -21,16 +21,17 @@ Many social media platforms like Instagram offer photo-sharing features but are 
 - How will they use it?
 
   - Users will upload and delete pictures.
-  - Users will view details of a picture, including its description, likes, comments.
+  - Users will view details of a picture, including its description, likes, comments, and the date it was posted.
   - Users will like and comment on pictures.
 
 ### Features
 
 - As a user, I want to upload pictures to my gallery.
 - As a user, I want to delete pictures from my gallery.
-- As a user, I want to view details of pictures, including the picture itself, its description, likes, comments.
+- As a user, I want to view details of each picture, including the picture itself, its description, likes, comments, and the date it was posted.
 - As a user, I want to like pictures.
 - As a user, I want to comment on pictures.
+- As a user, I want to update the description of my uploaded pictures.
 
 ## Implementation
 
