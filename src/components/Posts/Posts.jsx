@@ -105,7 +105,10 @@ function Posts() {
       <ul className="posts__list">
         {posts.map((post) => (
           <li key={post.id} className="posts__item">
-            <div className="posts__user-info">
+            <div
+              to={`/users/${post?.user_id || ""}`}
+              className="posts__user-info"
+            >
               <NavLink to={`/users/${post?.user_id || ""}`}>
                 <img
                   className="posts__profile-picture"
@@ -113,7 +116,9 @@ function Posts() {
                   alt="profile picture"
                 />
               </NavLink>
-              <p className="posts__user-name">{post.user_name}</p>
+              <NavLink to={`/users/${post?.user_id || ""}`}>
+                <p className="posts__user-name">{post.user_name}</p>
+              </NavLink>
             </div>
             <img
               className="posts__picture"
