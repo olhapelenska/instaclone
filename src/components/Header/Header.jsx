@@ -6,7 +6,6 @@ import "./Header.scss";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const handleLogout = () => {

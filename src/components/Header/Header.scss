@@ -6,7 +6,12 @@
   border-bottom: 1px solid $borderGray;
 
   &__container {
-    width: 65%;
+    width: 90%;
+
+    @include tablet {
+      width: 65%;
+    }
+
     margin: 0 auto;
     @include flex-space-between-center;
     padding: 0.75rem 0;

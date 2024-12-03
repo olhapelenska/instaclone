@@ -7,9 +7,16 @@
   height: 90vh;
 
   &__container {
-    width: 65%;
+    width: 80%;
+    @include tablet {
+      flex-direction: row;
+    }
+    @include desktop {
+      width: 65%;
+    }
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
   }
 
   &__close {
@@ -21,14 +28,20 @@
   }
 
   &__image {
-    width: 60%;
+    width: 100%;
+    @include tablet {
+      width: 70%;
+    }
   }
 
   &__arrow {
     position: absolute;
     color: $white;
     top: 50%;
-    left: 5%;
+    left: 2%;
+    @include tablet {
+      left: 5%;
+    }
     font-size: 2rem;
   }
 
@@ -42,11 +55,18 @@
   }
 
   &__info {
-    width: 40%;
+    width: 100%;
+
+    @include tablet {
+      width: 35%;
+    }
   }
 
   &__user {
-    padding: 0.5rem 0.5rem 1rem 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    @include tablet {
+      padding: 0.5rem 0.5rem 1rem 1.5rem;
+    }
     @include flex-align-center;
     gap: 0.5rem;
     border-bottom: 1px solid $borderGray;
@@ -61,7 +81,10 @@
   &__description,
   &__time-posted,
   &__likes {
-    padding: 0.5rem 0.5rem 1rem 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    @include tablet {
+      padding: 0.5rem 0.5rem 1rem 1.5rem;
+    }
   }
 
   &__description {
@@ -102,7 +125,10 @@
   }
 
   &__comments {
-    padding: 0.5rem 0.5rem 1rem 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    @include tablet {
+      padding: 0.5rem 0.5rem 1rem 1.5rem;
+    }
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -146,10 +172,10 @@
   }
 
   &__delete-comment {
-    margin-left: 10px;
+    margin-left: 0.5rem;
     background: none;
     border: none;
-    color: red;
+    color: $grey;
     cursor: pointer;
     font-size: 0.9rem;
 
@@ -162,7 +188,10 @@
     color: $white;
     border: 1px solid $white;
     padding: 0.5rem 0.875rem;
-    margin: 0 0.5rem 0.5rem 1.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    @include tablet {
+      margin: 0.5rem 0.5rem 1rem 1.5rem;
+    }
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.2s;
