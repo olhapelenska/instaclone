@@ -12,7 +12,13 @@ function LoginPage({ setIsAuthenticated }) {
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const handleLogin = async (e) => {
-    if (e) e.preventDefault();
+    e.preventDefault();
+
+    if (!email || !password) {
+      setError("Email or password missing!");
+      return;
+    }
+
     setError("");
 
     try {
