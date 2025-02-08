@@ -9,16 +9,11 @@ function LoginPage({ setIsAuthenticated }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [isDemoLogin, setIsDemoLogin] = useState(false);
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
-  const handleLogin = async (e = null) => {
-    if (e) e.preventDefault(); // Only call preventDefault if an event exists
-
-    if (!email || !password) {
-      setError("Email or password missing!");
-      return;
-    }
-
+  const handleLogin = async (e) => {
+    e.preventDefault();
     setError("");
 
     try {
@@ -45,11 +40,15 @@ function LoginPage({ setIsAuthenticated }) {
   const handleDemoLogin = () => {
     setEmail("alice@example.com");
     setPassword("password123");
-
-    setTimeout(() => {
-      handleLogin();
-    }, 300);
+    setIsDemoLogin(true);
   };
+
+  useEffect(() => {
+    if (isDemoLogin) {
+      handleLogin(new Event("submit"));
+      setIsDemoLogin(false);
+    }
+  }, [email, password]);
 
   return (
     <div className="login-page">
