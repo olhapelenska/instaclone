@@ -69,6 +69,22 @@
     }
   }
 
+  &__demo-button {
+    width: 100%;
+    margin-top: 0.625rem;
+    padding: 0.5rem 0;
+    background-color: $metaBlue;
+    color: $white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #007bb5;
+    }
+  }
+
   &__error {
     margin-top: 0.625rem;
     color: #ff4d4d;

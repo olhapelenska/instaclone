@@ -12,7 +12,7 @@ function LoginPage({ setIsAuthenticated }) {
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setError("");
 
     try {
@@ -34,6 +34,15 @@ function LoginPage({ setIsAuthenticated }) {
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong!");
     }
+  };
+
+  const handleDemoLogin = () => {
+    setEmail("alice@example.com");
+    setPassword("password123");
+
+    setTimeout(() => {
+      handleLogin();
+    }, 300);
   };
 
   return (
@@ -64,6 +73,9 @@ function LoginPage({ setIsAuthenticated }) {
               Log in
             </button>
           </form>
+          <button className="login-page__demo-button" onClick={handleDemoLogin}>
+            Demo Login
+          </button>
           {error && <p className="login-page__error">{error}</p>}
         </div>
         <div className="login-page__sign-up">
