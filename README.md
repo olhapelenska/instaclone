@@ -39,7 +39,7 @@ Many social media platforms like Instagram offer photo-sharing features but are 
 
 - Frontend: React (for building the user interface)
 - Backend: Node.js with Express (for server-side logic)
-- Database: MySQL (to store user data, pictures, likes, and comments)
+- Database: MySQL (to store user data)
 - Libraries:
   - Frontend Libraries: React Router (for navigation), Axios (for API requests)
   - Backend Libraries: Knex (for MySQL query building)
