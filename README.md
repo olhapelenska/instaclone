@@ -42,7 +42,7 @@ Many social media platforms like Instagram offer photo-sharing features but are 
 - Database: MySQL (to store user data)
 - Libraries:
   - Frontend Libraries: React Router (for navigation), Axios (for API requests)
-  - Backend Libraries: Knex (for MySQL query building)
+  - Backend Libraries: Knex.js (for MySQL query building)
 
 ### APIs
 
