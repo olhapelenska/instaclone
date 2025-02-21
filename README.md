@@ -50,14 +50,9 @@ Many social media platforms like Instagram offer photo-sharing features but are 
 
 ### Sitemap
 
-- Home Page:
-
-  - For a single user: Displays a gallery of hardcoded images from "other users".
-  - For multiple users (nice-to-have, might be implemented): Dynamically loads posts and comments from the database using Knex and MySQL.
-
-- Profile Page: Displays the user’s uploaded pictures as a gallery, along with some information about the user.
+- Home Page: Dynamically loads posts and comments from the database using Knex and MySQL.
+- Profile Page: Displays the user’s uploaded pictures as a gallery, along with some information about the user. Allows the user to upload a new picture and provide a description.
 - Picture Details Page: Shows a single picture with its description, likes, comments, and the date it was posted.
-- Upload Page: Allows the user to upload a new picture and provide a description.
 
 ### Mockups
 
